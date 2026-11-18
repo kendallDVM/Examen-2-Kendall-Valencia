@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class VentanaVeterinaria extends JFrame {
     private final VeterinariaController controller;
-    private final JTextField txtCedula=new JTextField(12), txtNombreCliente=new JTextField(16), txtTelefono=new JTextField(12);
+    private final JTextField txtCedula=new JTextField(12), txtNombreCliente=new JTextField(16), txtTelefono=new JTextField(12), txtEdadCliente=new JTextField(5);
     private final JTextField txtCodigo=new JTextField(8), txtNombreMascota=new JTextField(12), txtEdad=new JTextField(5), txtDueno=new JTextField(12), txtFiltro=new JTextField(12);
     private final JComboBox<Especie> cmbEspecie=new JComboBox<>(Especie.values());
     private final JTextArea salida=new JTextArea(16,64);
@@ -16,7 +16,7 @@ public class VentanaVeterinaria extends JFrame {
         super("Clínica Veterinaria");
         this.controller=controller;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(940,620); setLocationRelativeTo(null);
+        setSize(1100,620); setLocationRelativeTo(null);
         setLayout(new BorderLayout(10,10));
         JTabbedPane pestañas=new JTabbedPane();
         pestañas.addTab("Clientes", panelClientes()); pestañas.addTab("Mascotas", panelMascotas());
@@ -35,9 +35,10 @@ public class VentanaVeterinaria extends JFrame {
         p.add(new JLabel("Cédula:"));p.add(txtCedula);
         p.add(new JLabel("Nombre:"));p.add(txtNombreCliente);
         p.add(new JLabel("Teléfono:"));p.add(txtTelefono);
+        p.add(new JLabel("Edad:"));p.add(txtEdadCliente);
         JButton registrar=new JButton("Registrar cliente"), listar=new JButton("Listar clientes");
         p.add(registrar);p.add(listar);
-        registrar.addActionListener(e->ejecutar(()->{controller.registrarCliente(txtCedula.getText(),txtNombreCliente.getText(),txtTelefono.getText());salida.setText(controller.verClientes());estado.setText("Cliente guardado.");}));
+        registrar.addActionListener(e->ejecutar(()->{controller.registrarCliente(txtCedula.getText(),txtNombreCliente.getText(),txtTelefono.getText(),txtEdadCliente.getText());salida.setText(controller.verClientes());estado.setText("Cliente guardado.");}));
         listar.addActionListener(e->ejecutar(()->salida.setText(controller.verClientes())));
         return p;
     }

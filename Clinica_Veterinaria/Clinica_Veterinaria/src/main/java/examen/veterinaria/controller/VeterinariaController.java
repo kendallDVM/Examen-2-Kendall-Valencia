@@ -6,7 +6,7 @@ import java.util.List;
 public class VeterinariaController {
     private final VeterinariaService servicio;
     public VeterinariaController(VeterinariaService servicio) { this.servicio = servicio; }
-    public void registrarCliente(String cedula,String nombre,String telefono) { servicio.registrarCliente(cedula,nombre,telefono); }
+    public void registrarCliente(String cedula,String nombre,String telefono,String edad) { servicio.registrarCliente(cedula,nombre,telefono,Integer.parseInt(edad.trim())); }
     public void registrarMascota(String codigo,String nombre,Especie especie,String edad,String cedula) { servicio.registrarMascota(codigo,nombre,especie,Integer.parseInt(edad.trim()),cedula); }
     public void actualizarMascota(String codigo,String nombre,Especie especie,String edad,String cedula) { servicio.actualizarMascota(codigo,nombre,especie,Integer.parseInt(edad.trim()),cedula); }
     public void eliminarMascota(String codigo) { servicio.eliminarMascota(codigo); }

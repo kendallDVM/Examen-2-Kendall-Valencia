@@ -16,8 +16,8 @@ public class VeterinariaService {
         for (Cliente c : clientes.cargarTodos()) if(c.getCedula().equalsIgnoreCase(cedula.trim())) return c;
         return null;
     }
-    public void registrarCliente(String cedula, String nombre, String telefono) {
-        Cliente c = new Cliente(cedula,nombre,telefono);
+    public void registrarCliente(String cedula, String nombre, String telefono, int edad) {
+        Cliente c = new Cliente(cedula,nombre,telefono,edad);
         if(buscarCliente(c.getCedula()) != null) throw new IllegalArgumentException("La cédula ya está registrada.");
         clientes.insertar(c);
     }
